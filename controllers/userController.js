@@ -1,13 +1,24 @@
 const { User } = require('../models');
+const bcrypt = require('bcrypt')
+
 
 class UserController {
   static async createUser(req, res) {
     try {
+      const {name, email, cpf, telefone, password, privacyPolicyAccept} = req.body
+
+      const hashedPassword = await bcrypt.hash(password, 10)
+
       const user = await User.create({
-        ...req.body,
-        privacyPolicyAcceptedAt: new Date()
-      });
-      res.status(201).json(user);
+        name,
+        email,
+        cpf,
+        telefone,
+        password: hashedPassword,
+        privacyPolicyAccept,
+      })
+
+      res.status(201).json({ id: user.id, name: user.name, email: user.email });
     } catch (error) {
       res.status(400).json({ message: error.message });
     }
@@ -34,6 +45,21 @@ class UserController {
       res.status(500).json({ message: error.message });
     }
   }
+
+
+  static async getUserByIdCliente(req, res) {
+    try {
+      const user = await User.findByPk(req.params.id);
+      if (user) {
+        res.status(200).json({name: user.name, email: user.email});
+      } else {
+        res.status(404).json({ message: 'Usuário não encontrado' });
+      }
+    } catch (error) {
+      res.status(500).json({ message: error.message });
+    }
+  }
+
 
   static async updateUser(req, res) {
     try {
