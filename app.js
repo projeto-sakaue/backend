@@ -7,6 +7,7 @@ const app = express();
 app.use(bodyParser.json());
 
 app.use('/sakaue', require('./routes/user'));
+app.use('/sakaue', require('./routes/policty'))
 
 db.sequelize.sync({ force: false }).then(() => {
   console.log('Database connected and synchronized');
