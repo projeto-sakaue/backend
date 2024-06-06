@@ -7,9 +7,6 @@ class PolicyController {
             const { version, content, effective_date } = req.body;
             const policy = await Policy.create({ version, content, effective_date });
 
-            await User.update({ privacyPolicyAccept: false }, { where: {} })
-
-
             res.status(201).json(policy);
         } catch (error) {
             res.status(400).json({ message: error.message });
@@ -44,9 +41,8 @@ class PolicyController {
             if (policy) {
 
                 req.body.effective_date = new Date()
-
+                req.body.version = (parseFloat(policy.version) + 1).toFixed(1);
                 await policy.update(req.body);
-                await User.update({ privacyPolicyAccept: false }, { where: {} });
                 
                 res.status(200).json(policy);
             } else {

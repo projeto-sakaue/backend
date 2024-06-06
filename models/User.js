@@ -23,10 +23,6 @@ module.exports = (sequelize, DataTypes) => {
       password: {
         type: DataTypes.STRING,
         allowNull: false
-      },
-      privacyPolicyAccept: {
-        type: DataTypes.BOOLEAN,
-        allowNull: false
       }
     });
   
