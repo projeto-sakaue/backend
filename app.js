@@ -8,8 +8,8 @@ const app = express();
 app.use(bodyParser.json());
 
 app.use('/sakaue', require('./routes/user'));
-app.use('/sakaue', require('./routes/policty'))
-app.use('/sakaue', require('./routes/policyDetails'))
+app.use('/sakaue', require('./routes/term'))
+app.use('/sakaue', require('./routes/termDetails'))
 app.use('/sakaue', require('./routes/userHistory'))
 
 

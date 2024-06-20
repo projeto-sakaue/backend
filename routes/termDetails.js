@@ -1,8 +1,8 @@
 const express = require('express');
 const router = express.Router();
-const PolicyDetailsController = require('../controllers/policyDetailsController');
+const TermDetailsController = require('../controllers/termDetailsController');
 const privacyPolicy = require('../middlewares/privacyPolicy');
 
-router.post('/policyDetails', PolicyDetailsController.createPolicy);
+router.post('/termDetails', TermDetailsController.createTerm);
 
 module.exports = router;

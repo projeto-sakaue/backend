@@ -1,18 +1,18 @@
 module.exports = (sequelize, DataTypes) => {
-    const PolicyDetails = sequelize.define('PolicyDetails', {
-        id_policy: {
+    const TermDetails = sequelize.define('TermDetails', {
+        id_term: {
             type: DataTypes.INTEGER,
             allowNull: false,
             references: {
-                model: 'Policies',
+                model: 'Terms',
                 key: 'id'
             }
         },
-        term_details: {
+        acceptance_details: {
             type: DataTypes.TEXT,
             allowNull: false
         }
     });
 
-    return PolicyDetails;
+    return TermDetails;
 };

@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-    const Policy = sequelize.define('Policy', {
+    const Term = sequelize.define('Term', {
         version: {
             type: DataTypes.STRING,
             allowNull: false
@@ -14,5 +14,5 @@ module.exports = (sequelize, DataTypes) => {
         }
     });
 
-    return Policy;
+    return Term;
 };

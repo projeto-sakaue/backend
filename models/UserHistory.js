@@ -8,11 +8,11 @@ module.exports = (sequelize, DataTypes) => {
                 key: 'id'
             }
         },
-        policy_detail_id: {
+        term_detail_id: {
             type: DataTypes.INTEGER,
             allowNull: false,
             references: {
-                model: 'PolicyDetails',
+                model: 'TermDetails',
                 key: 'id'
             }
         },

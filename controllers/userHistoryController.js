@@ -2,13 +2,13 @@ const { UserHistory } = require('../models');
 
 class UserHistoryController {
     static async createUserHistory(req, res) {
-        const { user_id, policy_detail_id, acceptance_status } = req.body;
+        const { user_id, term_detail_id, acceptance_status } = req.body;
         const acceptance_date = new Date();
 
         try {
             const userHistory = await UserHistory.create({
                 user_id,
-                policy_detail_id,
+                term_detail_id,
                 acceptance_status,
                 acceptance_date
             });
